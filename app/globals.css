@@ -1,0 +1,100 @@
+/* Fonts loaded at runtime (keeps offline builds working). Swap for next/font/local to self-host. */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Space Grotesk";
+  --font-sans: "Inter";
+  --font-mono: "IBM Plex Mono";
+
+  /* Light theme */
+  --bg: 210 30% 98%;
+  --surface: 0 0% 100%;
+  --surface-2: 210 28% 96%;
+  --border: 214 20% 88%;
+  --ink: 209 30% 22%;
+  --muted: 212 14% 46%;
+  --shadow: 209 40% 30%;
+
+  --ember: 9 83% 61%;
+  --ember-soft: 9 90% 68%;
+  --ember-deep: 8 70% 50%;
+}
+
+.dark {
+  --bg: 209 34% 11%;
+  --surface: 209 30% 15%;
+  --surface-2: 209 28% 18%;
+  --border: 209 20% 26%;
+  --ink: 210 30% 94%;
+  --muted: 211 16% 66%;
+  --shadow: 209 60% 4%;
+
+  --ember: 9 84% 63%;
+  --ember-soft: 9 90% 70%;
+  --ember-deep: 8 74% 54%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--bg));
+  color: hsl(var(--ink));
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: hsl(var(--ember) / 0.28);
+}
+
+/* Keyboard focus only */
+:focus-visible {
+  outline: 2px solid hsl(var(--ember));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility: thin scrollbar for menus */
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 8px;
+}
+
+/* cmdk */
+[cmdk-overlay] {
+  position: fixed;
+  inset: 0;
+  background: hsl(var(--shadow) / 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 90;
+}
+[cmdk-item][data-selected="true"] {
+  background: hsl(var(--ember) / 0.12);
+  color: hsl(var(--ink));
+}
