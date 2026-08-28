@@ -1,51 +1,91 @@
-import type { Metadata } from "next";
-import { Github, Plus } from "lucide-react";
-import { PageHeader } from "@/components/page-header";
-import { ShowcaseGrid } from "@/features/dao/showcase-grid";
-import { daoService } from "@/features/dao/service";
+import Link from "next/link";
+import { ArrowUp } from "lucide-react";
+import { Logo } from "@/components/logo";
 
-export const metadata: Metadata = {
-  title: "Community Showcase",
-  description: "Every dApp, tool, wallet, bot, and resource the Redbelly community has built — all in one place.",
-};
+const columns: { title: string; links: { label: string; href: string; external?: boolean }[] }[] = [
+  {
+    title: "Developers",
+    links: [
+      { label: "Documentation", href: "/developers" },
+      { label: "Vine Portal", href: "https://vine.redbelly.network/", external: true },
+      { label: "Explorer", href: "https://redbelly.routescan.io/", external: true },
+      { label: "Grants", href: "https://redbelly.network/grant", external: true },
+      { label: "Bug Bounty", href: "https://hashlock.com/bug-bounty/redbelly-network", external: true },
+    ],
+  },
+  {
+    title: "DAO",
+    links: [
+      { label: "Governance", href: "/dao" },
+      { label: "Proposals", href: "/dao/proposals" },
+      { label: "Treasury", href: "/dao/treasury" },
+      { label: "Task Board", href: "/dao/tasks" },
+      { label: "Community Showcase", href: "/dao/showcase" },
+    ],
+  },
+  {
+    title: "Institutional",
+    links: [
+      { label: "Security", href: "/institutional#security" },
+      { label: "Compliance", href: "/institutional#compliance" },
+      { label: "Project Acacia", href: "/institutional#acacia" },
+      { label: "Metrics", href: "/institutional#metrics" },
+    ],
+  },
+  {
+    title: "Community",
+    links: [
+      { label: "Discord", href: "https://discord.gg/redbelly", external: true },
+      { label: "X · DAO", href: "https://x.com/RedbellyDAO", external: true },
+      { label: "X · Network", href: "https://x.com/RedbellyNetwork", external: true },
+      { label: "Whitepaper", href: "https://www.redbelly.network/redbelly-network-whitepaper", external: true },
+    ],
+  },
+];
 
-export default async function ShowcasePage() {
-  const projects = await daoService.listShowcaseProjects();
-
+export function Footer() {
   return (
-    <>
-      <PageHeader
-        eyebrow="Built by the Community"
-        title="Community Showcase"
-        description="dApps, tools, wallets, bots, and educational content built on Redbelly by the community, for the community."
-        crumbs={[
-          { label: "Home", href: "/" },
-          { label: "DAO", href: "/dao" },
-          { label: "Community Showcase", href: "/dao/showcase" },
-        ]}
-      />
-      <section className="mx-auto max-w-6xl px-5 py-12 lg:px-8">
-        <div className="flex flex-col items-start justify-between gap-4 rounded-4xl border border-border bg-mesh-radial p-6 sm:flex-row sm:items-center">
+    <footer className="border-t border-border bg-surface">
+      <div className="mx-auto max-w-7xl px-5 py-14 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-[1.3fr_repeat(4,1fr)]">
           <div>
-            <p className="font-display text-lg font-semibold tracking-tight">Shipped something on Redbelly?</p>
-            <p className="mt-1 text-sm text-muted">
-              Open a PR against the showcase list, or drop a link in Discord and a working group will add it.
+            <Logo />
+            <p className="mt-4 max-w-xs text-sm text-muted">
+              Community-led governance for Redbelly Network — the compliant Layer 1 for real-world
+              asset tokenisation.
             </p>
           </div>
-          <div className="flex shrink-0 gap-2">
-            <a href="https://github.com/Cyon0x/redbelly-dao" target="_blank" rel="noreferrer" className="inline-flex h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-medium text-ink transition-colors hover:border-ember hover:text-ember">
-              <Github className="h-4 w-4" /> Submit via PR
-            </a>
-            <a href="https://discord.gg/redbelly" target="_blank" rel="noreferrer" className="inline-flex h-11 items-center gap-2 rounded-full bg-ember px-5 text-sm font-medium text-white transition-all hover:brightness-105">
-              <Plus className="h-4 w-4" /> Submit on Discord
-            </a>
-          </div>
+          {columns.map((col) => (
+            <div key={col.title}>
+              <p className="text-xs font-medium uppercase tracking-wider text-muted">{col.title}</p>
+              <ul className="mt-4 space-y-2.5">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    {link.external ? (
+                      <a href={link.href} target="_blank" rel="noreferrer" className="text-sm text-ink transition-colors hover:text-ember">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link href={link.href} className="text-sm text-ink transition-colors hover:text-ember">
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div className="mt-10">
-          <ShowcaseGrid projects={projects} />
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 sm:flex-row sm:items-center">
+          <p className="text-xs text-muted">
+            © {new Date().getFullYear()} Redbelly DAO · Community project. Not affiliated financial advice.
+          </p>
+          <a href="#top" className="flex items-center gap-2 text-xs text-muted transition-colors hover:text-ember">
+            Back to top <ArrowUp className="h-3.5 w-3.5" />
+          </a>
         </div>
-      </section>
-    </>
+      </div>
+    </footer>
   );
 }
