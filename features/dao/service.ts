@@ -3,6 +3,7 @@ import type {
   TreasurySnapshot,
   Task,
   WorkingGroup,
+  ShowcaseProject,
 } from "@/features/dao/types";
 
 /**
@@ -125,6 +126,88 @@ const workingGroups: WorkingGroup[] = [
   { slug: "community", name: "Community", mandate: "Events, translations, ambassadors, and moderation.", lead: "community.rbn.eth", contributors: 41, openTasks: 9 },
 ];
 
+const showcaseProjects: ShowcaseProject[] = [
+  {
+    slug: "acacia-scan",
+    name: "AcaciaScan",
+    tagline: "Community block explorer with RWA-aware transaction tagging and a public API.",
+    category: "Explorer",
+    builder: "0xIndex…3f1",
+    url: "https://redbelly.routescan.io/",
+    repoUrl: "https://github.com/redbelly-community/acacia-scan",
+    tags: ["explorer", "api", "indexing"],
+    featured: true,
+  },
+  {
+    slug: "rbnt-vault",
+    name: "RBNT Vault",
+    tagline: "Non-custodial staking dashboard for delegating RBNT to active governors.",
+    category: "dApp",
+    builder: "vault.rbn.eth",
+    url: "https://rbnt-vault.vercel.app",
+    tags: ["staking", "defi", "wagmi"],
+    featured: true,
+  },
+  {
+    slug: "redbelly-viem-kit",
+    name: "redbelly-viem-kit",
+    tagline: "Drop-in viem chain config, ABIs, and typed hooks for building on Redbelly in minutes.",
+    category: "Tool / SDK",
+    builder: "0xBuild…7c8",
+    url: "https://www.npmjs.com/package/redbelly-viem-kit",
+    repoUrl: "https://github.com/redbelly-community/redbelly-viem-kit",
+    tags: ["sdk", "viem", "typescript"],
+    featured: true,
+  },
+  {
+    slug: "acacia-pay",
+    name: "AcaciaPay",
+    tagline: "Point-of-sale widget for accepting tokenised RWA settlement on Redbelly.",
+    category: "dApp",
+    builder: "pay.rbn.eth",
+    url: "https://acaciapay.xyz",
+    tags: ["payments", "rwa", "widget"],
+  },
+  {
+    slug: "governor-watch",
+    name: "Governor Watch",
+    tagline: "Discord bot that posts live governor rotation and proposal-quorum alerts.",
+    category: "Bot / Integration",
+    builder: "0xBot…2d4",
+    url: "https://discord.gg/redbelly",
+    repoUrl: "https://github.com/redbelly-community/governor-watch",
+    tags: ["bot", "discord", "governance"],
+  },
+  {
+    slug: "belly-wallet",
+    name: "Belly Wallet",
+    tagline: "Lightweight browser extension wallet with native Redbelly network support out of the box.",
+    category: "Wallet",
+    builder: "0xPixel…4a1",
+    url: "https://bellywallet.io",
+    tags: ["wallet", "extension"],
+  },
+  {
+    slug: "rwa-101",
+    name: "RWA 101",
+    tagline: "A free video course walking through real-world asset tokenisation on Redbelly, start to finish.",
+    category: "Content / Education",
+    builder: "devrel.rbn.eth",
+    url: "https://youtube.com/@redbellynetwork",
+    tags: ["education", "video", "rwa"],
+  },
+  {
+    slug: "governor-node-toolkit",
+    name: "Governor Node Toolkit",
+    tagline: "Docker Compose stack and monitoring dashboards for running a Redbelly governor node.",
+    category: "Infrastructure",
+    builder: "0xOps…6e5",
+    url: "https://github.com/redbelly-community/governor-node-toolkit",
+    repoUrl: "https://github.com/redbelly-community/governor-node-toolkit",
+    tags: ["infra", "docker", "monitoring"],
+  },
+];
+
 function delay<T>(value: T, ms = 120): Promise<T> {
   return new Promise((resolve) => setTimeout(() => resolve(value), ms));
 }
@@ -135,6 +218,7 @@ export const daoService = {
   getTreasury: () => delay(treasury),
   listTasks: () => delay(tasks),
   listWorkingGroups: () => delay(workingGroups),
+  listShowcaseProjects: () => delay(showcaseProjects),
   metrics: () =>
     delay({
       treasuryUsd: treasury.totalUsd,
@@ -145,4 +229,4 @@ export const daoService = {
 };
 
 // Synchronous fixtures for static generation / search indexing.
-export const daoFixtures = { proposals, treasury, tasks, workingGroups };
+export const daoFixtures = { proposals, treasury, tasks, workingGroups, showcaseProjects };
