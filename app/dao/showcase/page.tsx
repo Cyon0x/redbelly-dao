@@ -33,20 +33,10 @@ export default async function ShowcasePage() {
             </p>
           </div>
           <div className="flex shrink-0 gap-2">
-            
-              href="https://github.com/Cyon0x/redbelly-dao"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-medium text-ink transition-colors hover:border-ember hover:text-ember"
-            >
+            <a href="https://github.com/Cyon0x/redbelly-dao" target="_blank" rel="noreferrer" className="inline-flex h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-medium text-ink transition-colors hover:border-ember hover:text-ember">
               <Github className="h-4 w-4" /> Submit via PR
             </a>
-            
-              href="https://discord.gg/redbelly"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex h-11 items-center gap-2 rounded-full bg-ember px-5 text-sm font-medium text-white transition-all hover:brightness-105"
-            >
+            <a href="https://discord.gg/redbelly" target="_blank" rel="noreferrer" className="inline-flex h-11 items-center gap-2 rounded-full bg-ember px-5 text-sm font-medium text-white transition-all hover:brightness-105">
               <Plus className="h-4 w-4" /> Submit on Discord
             </a>
           </div>
