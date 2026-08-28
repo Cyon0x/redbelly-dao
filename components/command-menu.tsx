@@ -8,6 +8,7 @@ import {
   Coins,
   FileText,
   Gavel,
+  LayoutGrid,
   ListChecks,
   Search,
 } from "lucide-react";
@@ -37,6 +38,9 @@ function buildIndex(): Item[] {
   );
   daoFixtures.treasury.assets.forEach((a) =>
     items.push({ label: `Treasury · ${a.name}`, href: "/dao/treasury", group: "Treasury", icon: Coins }),
+  );
+  daoFixtures.showcaseProjects.forEach((p) =>
+    items.push({ label: `${p.name} · ${p.category}`, href: "/dao/showcase", group: "Showcase", icon: LayoutGrid }),
   );
   return items;
 }
