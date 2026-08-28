@@ -62,12 +62,7 @@ export function Footer() {
                 {col.links.map((link) => (
                   <li key={link.label}>
                     {link.external ? (
-                      
-                        href={link.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-sm text-ink transition-colors hover:text-ember"
-                      >
+                      <a href={link.href} target="_blank" rel="noreferrer" className="text-sm text-ink transition-colors hover:text-ember">
                         {link.label}
                       </a>
                     ) : (
@@ -86,10 +81,7 @@ export function Footer() {
           <p className="text-xs text-muted">
             © {new Date().getFullYear()} Redbelly DAO · Community project. Not affiliated financial advice.
           </p>
-          
-            href="#top"
-            className="flex items-center gap-2 text-xs text-muted transition-colors hover:text-ember"
-          >
+          <a href="#top" className="flex items-center gap-2 text-xs text-muted transition-colors hover:text-ember">
             Back to top <ArrowUp className="h-3.5 w-3.5" />
           </a>
         </div>
