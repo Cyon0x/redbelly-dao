@@ -4,7 +4,7 @@ import { daoFixtures } from "@/features/dao/service";
 const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/developers", "/dao", "/dao/proposals", "/dao/treasury", "/dao/tasks", "/institutional"];
+  const routes = ["", "/developers", "/dao", "/dao/proposals", "/dao/treasury", "/dao/tasks", "/dao/showcase", "/institutional"];
   const staticRoutes = routes.map((r) => ({
     url: `${base}${r}`,
     lastModified: new Date(),
