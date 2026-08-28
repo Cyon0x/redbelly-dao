@@ -20,6 +20,7 @@ const columns: { title: string; links: { label: string; href: string; external?:
       { label: "Proposals", href: "/dao/proposals" },
       { label: "Treasury", href: "/dao/treasury" },
       { label: "Task Board", href: "/dao/tasks" },
+      { label: "Community Showcase", href: "/dao/showcase" },
     ],
   },
   {
@@ -61,7 +62,7 @@ export function Footer() {
                 {col.links.map((link) => (
                   <li key={link.label}>
                     {link.external ? (
-                      <a
+                      
                         href={link.href}
                         target="_blank"
                         rel="noreferrer"
@@ -85,7 +86,7 @@ export function Footer() {
           <p className="text-xs text-muted">
             © {new Date().getFullYear()} Redbelly DAO · Community project. Not affiliated financial advice.
           </p>
-          <a
+          
             href="#top"
             className="flex items-center gap-2 text-xs text-muted transition-colors hover:text-ember"
           >
