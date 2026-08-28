@@ -54,3 +54,24 @@ export interface WorkingGroup {
   contributors: number;
   openTasks: number;
 }
+
+export type ShowcaseCategory =
+  | "dApp"
+  | "Tool / SDK"
+  | "Wallet"
+  | "Explorer"
+  | "Bot / Integration"
+  | "Content / Education"
+  | "Infrastructure";
+
+export interface ShowcaseProject {
+  slug: string;
+  name: string;
+  tagline: string;
+  category: ShowcaseCategory;
+  builder: string;
+  url: string;
+  repoUrl?: string;
+  tags: string[];
+  featured?: boolean;
+}
