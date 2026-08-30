@@ -6,6 +6,7 @@ import {
   Code2,
   Coins,
   Gavel,
+  LayoutGrid,
   ListChecks,
   ScrollText,
   Users,
@@ -184,6 +185,53 @@ export default async function HomePage() {
             </Reveal>
           ))}
         </div>
+      </section>
+
+      {/* DAO + Community Showcase orbit */}
+      <section className="mx-auto max-w-7xl px-5 py-16 lg:px-8 lg:py-20">
+        <Reveal>
+          <div className="relative min-h-[430px] overflow-hidden rounded-[2.75rem] border border-border bg-black px-6 py-10 text-white sm:px-10 lg:px-14">
+            <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10" />
+            <div className="pointer-events-none absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-ember/25" />
+            <div className="pointer-events-none absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ember shadow-[0_0_70px_22px_rgba(255,31,43,0.35)]" />
+
+            <div className="relative z-10 max-w-xl">
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-ember">DAO command layer</p>
+              <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight sm:text-5xl">
+                Two places to build, decide and be seen.
+              </h2>
+              <p className="mt-4 max-w-lg text-sm leading-6 text-white/60 sm:text-base">
+                Governance is where the community decides. The Showcase is where the community ships. Both are now first-class destinations from the homepage.
+              </p>
+            </div>
+
+            <Link
+              href="/dao"
+              className="group absolute bottom-9 left-6 z-10 w-[calc(100%-3rem)] max-w-sm -rotate-2 rounded-[2rem] border border-white/15 bg-white/[0.06] p-5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:rotate-0 hover:border-ember/70 sm:left-10 sm:w-72 lg:bottom-10 lg:left-auto lg:right-16"
+            >
+              <div className="flex items-center justify-between">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-ember/15 text-ember"><Gavel className="h-5 w-5" /></span>
+                <ArrowUpRight className="h-5 w-5 text-white/40 transition-colors group-hover:text-ember" />
+              </div>
+              <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.22em] text-white/40">01 / GOVERN</p>
+              <h3 className="mt-2 font-display text-2xl font-semibold">Enter the DAO</h3>
+              <p className="mt-2 text-sm text-white/55">Proposals, voting, treasury, tasks and working groups.</p>
+            </Link>
+
+            <Link
+              href="/dao/showcase"
+              className="group absolute bottom-9 right-6 z-10 w-[calc(100%-3rem)] max-w-sm rotate-2 rounded-[2rem] border border-ember/35 bg-ember/[0.08] p-5 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:rotate-0 hover:border-ember sm:right-10 sm:w-72 lg:bottom-28 lg:right-64"
+            >
+              <div className="flex items-center justify-between">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-ember text-white"><LayoutGrid className="h-5 w-5" /></span>
+                <ArrowUpRight className="h-5 w-5 text-white/40 transition-colors group-hover:text-white" />
+              </div>
+              <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.22em] text-ember">02 / SHIP</p>
+              <h3 className="mt-2 font-display text-2xl font-semibold">Community Showcase</h3>
+              <p className="mt-2 text-sm text-white/55">Discover the dApps, tools and products built by Redbelly contributors.</p>
+            </Link>
+          </div>
+        </Reveal>
       </section>
 
       {/* Cross-link band */}
